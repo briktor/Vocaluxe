@@ -1,4 +1,4 @@
-﻿#region license
+#region license
 // This file is part of Vocaluxe.
 // 
 // Vocaluxe is free software: you can redistribute it and/or modify
@@ -643,14 +643,14 @@ namespace VocaluxeLib.Menu.SongMenu
             int halfListLength = _ListLength / 2;
             int offset;
 
-            if (_SelectionNr < _Offset && _SelectionNr >= 0)
+            if (_SelectionNr < _Offset + halfListLength && _SelectionNr >= 0)
             {
                 if (_SelectionNr - halfListLength >= 0)
                     offset = _SelectionNr - halfListLength;
                 else
                     offset = 0;
             }
-            else if (_SelectionNr >= _Offset + _ListLength)
+            else if (_SelectionNr >= _Offset + halfListLength)
             {
                 if (_SelectionNr + halfListLength > itemCount)
                     offset = itemCount - _ListLength;
