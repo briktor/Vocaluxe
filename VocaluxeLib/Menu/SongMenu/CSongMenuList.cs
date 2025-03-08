@@ -467,31 +467,6 @@ namespace VocaluxeLib.Menu.SongMenu
             {
                 if (mouseEvent.Wheel != 0 && CHelper.IsInBounds(_ScrollRect, mouseEvent))
                     _UpdateList(_Offset +  mouseEvent.Wheel);
-
-                int lastSelection = _SelectionNr;
-                int i = 0;
-                bool somethingSelected = false;
-
-                foreach (CStatic tile in _Tiles)
-                {
-                    //create a rect including the cover and text of the song. 
-                    //(this way mouse over text should make a selection as well)
-                    SRectF songRect = new SRectF(tile.Rect.X, tile.Rect.Y, Rect.W, tile.Rect.H, tile.Rect.Z);
-                    if (tile.Texture != _CoverBGTexture && CHelper.IsInBounds(songRect, mouseEvent) && tile.Color.A != 0)
-                    {
-                        somethingSelected = true;
-                        _SelectionNr = i + _Offset;
-                        if (!CBase.Songs.IsInCategory())
-                            _PreviewNr = i + _Offset;
-                        break;
-                    }
-                    i++;
-                }
-                //Reset selection only if we moved out of the rect to avoid loosing it when selecting random songs
-                if (_MouseWasInRect && !somethingSelected)
-                    _SelectionNr = -1;
-                if (mouseEvent.Sender == ESender.WiiMote && _SelectionNr != lastSelection && _SelectionNr != -1)
-                    CBase.Controller.SetRumble(0.050f);
             }
             _MouseWasInRect = CHelper.IsInBounds(Rect, mouseEvent);
 
@@ -511,6 +486,22 @@ namespace VocaluxeLib.Menu.SongMenu
             }
             else if (mouseEvent.LB)
             {
+                int i = 0;
+                foreach (CStatic tile in _Tiles)
+                {
+                    //create a rect including the cover and text of the song. 
+                    //(this way mouse over text should make a selection as well)
+                    SRectF songRect = new SRectF(tile.Rect.X, tile.Rect.Y, Rect.W, tile.Rect.H, tile.Rect.Z);
+                    if (tile.Texture != _CoverBGTexture && CHelper.IsInBounds(songRect, mouseEvent) && tile.Color.A != 0)
+                    {
+                        _SelectionNr = i + _Offset;
+                        if (!CBase.Songs.IsInCategory())
+                            _PreviewNr = i + _Offset;
+                        break;
+                    }
+                    i++;
+                }
+
                 if (_SelectionNr >= 0 && _MouseWasInRect)
                 {
                     if (CBase.Songs.IsInCategory())
