@@ -1,4 +1,4 @@
-#region license
+﻿#region license
 // This file is part of Vocaluxe.
 // 
 // Vocaluxe is free software: you can redistribute it and/or modify
@@ -76,7 +76,7 @@ namespace VocaluxeLib.Menu.SongMenu
             set
             {
                 int max = CBase.Songs.IsInCategory() ? CBase.Songs.GetNumSongsVisible() : CBase.Songs.GetNumCategories();
-                base._SelectionNr = value.Clamp(-1, max - 1, true);
+                base._SelectionNr = value.Clamp(-1, max, true);
                 //Update list in case we scrolled 
                 _UpdateList();
 
@@ -321,6 +321,8 @@ namespace VocaluxeLib.Menu.SongMenu
 
             bool moveAllowed = !options.Selection.RandomOnly || (options.Selection.CategoryChangeAllowed && !CBase.Songs.IsInCategory());
             bool catChangePossible = CBase.Songs.GetTabs() == EOffOn.TR_CONFIG_ON && options.Selection.CategoryChangeAllowed;
+            bool isInCategory = CBase.Songs.IsInCategory();
+            int itemCount = isInCategory ? CBase.Songs.GetNumSongsVisible() : CBase.Songs.GetNumCategories();
 
             //If nothing selected set a reasonable default value
             if (keyEvent.IsArrowKey() && moveAllowed && _SelectionNr < 0)
@@ -404,19 +406,34 @@ namespace VocaluxeLib.Menu.SongMenu
                     break;
 
                 case Keys.Left:
-                    //Check for >0 so we do not allow selection of nothing (-1)
-                    if (_SelectionNr > 0 && moveAllowed)
+                    //Select previous entry or wrap to bottom if already at top of the list
+                    if (moveAllowed)
                     {
-                        _SelectionNr--;
+                        if (_SelectionNr > 0)
+                        {
+                            _SelectionNr--;
+                        }
+                        else
+                        {
+                            _SelectionNr = itemCount-1;
+                        }
                         _AutoplayPreviewIfEnabled();
                         keyEvent.Handled = true;
                     }
                     break;
 
                 case Keys.Right:
+                    //Select next entry or wrap to top if already at bottom of the list
                     if (moveAllowed)
                     {
-                        _SelectionNr++;
+                        if (_SelectionNr < itemCount-1)
+                        {
+                            _SelectionNr++;
+                        }
+                        else
+                        {
+                            _SelectionNr = 0;
+                        }
                         _AutoplayPreviewIfEnabled();
                         keyEvent.Handled = true;
                     }
@@ -431,9 +448,16 @@ namespace VocaluxeLib.Menu.SongMenu
                             keyEvent.Handled = true;
                         }
                     }
-                    else if (_SelectionNr >= 1 && moveAllowed)
+                    else if (moveAllowed)
                     {
-                        _SelectionNr -= 1;
+                        if (_SelectionNr > 0)
+                        {
+                            _SelectionNr--;
+                        }
+                        else
+                        {
+                            _SelectionNr = itemCount-1;
+                        }
                         _AutoplayPreviewIfEnabled();
                         keyEvent.Handled = true;
                     }
@@ -450,7 +474,14 @@ namespace VocaluxeLib.Menu.SongMenu
                     }
                     else if (moveAllowed)
                     {
-                        _SelectionNr += 1;
+                        if (_SelectionNr < itemCount-1)
+                        {
+                            _SelectionNr++;
+                        }
+                        else
+                        {
+                            _SelectionNr = 0;
+                        }
                         _AutoplayPreviewIfEnabled();
                         keyEvent.Handled = true;
                     }
@@ -463,10 +494,24 @@ namespace VocaluxeLib.Menu.SongMenu
 
         public override bool HandleMouse(ref SMouseEvent mouseEvent, SScreenSongOptions songOptions)
         {
+            bool isInCategory = CBase.Songs.IsInCategory();
+            int itemCount = isInCategory ? CBase.Songs.GetNumSongsVisible() : CBase.Songs.GetNumCategories();
+
             if (!songOptions.Selection.RandomOnly || (!CBase.Songs.IsInCategory() && songOptions.Selection.CategoryChangeAllowed))
             {
                 if (mouseEvent.Wheel != 0 && CHelper.IsInBounds(_ScrollRect, mouseEvent))
-                    _UpdateList(_Offset +  mouseEvent.Wheel);
+                {
+                    _SelectionNr = _SelectionNr + mouseEvent.Wheel;
+                    if (_SelectionNr < 0)
+                    {
+                        _SelectionNr = itemCount - 1;
+                    }
+                    else if (_SelectionNr > itemCount - 1)
+                    {
+                        _SelectionNr = 0;
+                    }
+                    _AutoplayPreviewIfEnabled();
+                }
             }
             _MouseWasInRect = CHelper.IsInBounds(Rect, mouseEvent);
 
