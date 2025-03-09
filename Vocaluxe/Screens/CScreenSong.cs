@@ -293,6 +293,8 @@ namespace Vocaluxe.Screens
                             {
                                 if (_SongMenu.GetPreviewSongNr() != -1)
                                     _ToggleSongOptions(ESongOptionsView.Song);
+                                    _ToggleSongOptions(ESongOptionsView.None);
+                                    _StartSong(_SongMenu.GetPreviewSongNr());
                             }
                             break;
 
@@ -693,6 +695,8 @@ namespace Vocaluxe.Screens
                 if (_SongMenu.GetPreviewSongNr() != -1 && !_Sso.Selection.PartyMode && _SongMenu.IsMouseOverSelectedSong(mouseEvent))
                 {
                     _ToggleSongOptions(ESongOptionsView.Song);
+                    _ToggleSongOptions(ESongOptionsView.None);
+                    _StartSong(_SongMenu.GetPreviewSongNr());
                     return true;
                 }
             }
@@ -1028,7 +1032,7 @@ namespace Vocaluxe.Screens
                 CGame.ClearSongs();
 
                 if (CGame.AddVisibleSong(songNr, gm))
-                    CGraphics.FadeTo(EScreen.Names);
+                    CGraphics.FadeTo(EScreen.Sing);
             }
         }
 
