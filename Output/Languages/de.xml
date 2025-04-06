@@ -148,6 +148,8 @@
   <string name="TR_SCREENSONG_BUTTON_STARTMEDLEY">Medley-Lieder singen</string>
   <string name="TR_SCREENSONG_NEWPLAYLIST">Neue Playlist</string>
   <string name="TR_SCREENSONG_SONGOPTIONS">Lied-Optionen</string>
+  <string name="TR_SCREENSONG_PLAYERSELECT_ON">Spielerauswahl anzeigen</string>
+  <string name="TR_SCREENSONG_PLAYERSELECT_OFF">Spielerauswahl überspringen</string>  
   <string name="TR_SCREENSONG_SEARCH">Suche:</string>
   <string name="TR_SCREENSONG_NOLANGUAGE">Keine Sprache</string>
   <string name="TR_SCREENSONG_NOYEAR">Ohne Jahr</string>
@@ -172,6 +174,14 @@
   <string name="TR_SCREENSING_NOMORESONGS">Keine weiteres Lied in der Playlist!</string>
   <string name="TR_SCREENSING_NOWEBCAM">Keine Webcam verfügbar!</string>
   <string name="TR_SCREENSING_ASPECTRATIO">Bildverhältnis: %a</string>
+  <string name="TR_SCREENSING_RATING_1">Perfekt!</string>
+  <string name="TR_SCREENSING_RATING_2">Fantastisch!</string>
+  <string name="TR_SCREENSING_RATING_3">Großartig!</string>
+  <string name="TR_SCREENSING_RATING_4">Gut!</string>
+  <string name="TR_SCREENSING_RATING_5">O.K.!</string>
+  <string name="TR_SCREENSING_RATING_6">Schlecht!</string>
+  <string name="TR_SCREENSING_RATING_7">Mies!</string>
+  <string name="TR_SCREENSING_RATING_8">Grausam!</string>
   <string name="TR_SCREENSING_SKIPPEDSECONDS">%s Sekunden übersprungen</string>
   <string name="TR_SCREENSCORE_SCORES">Auswertung</string>
   <string name="TR_SCREENSCORE_RATING">Bewertung</string>
