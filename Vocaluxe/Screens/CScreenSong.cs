@@ -114,7 +114,7 @@ namespace Vocaluxe.Screens
             return _AudioMode;
         }
 
-        private static EPlayerSelect _PlayerSelect = EPlayerSelect.TR_SCREENSONG_PLAYERSELECT_ON;
+        private static EPlayerSelect _PlayerSelect = EPlayerSelect.TR_SCREENSONG_PLAYERSELECT_OFF;
 
         public static EPlayerSelect GetPlayerSelect()
         {
