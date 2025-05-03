@@ -206,10 +206,12 @@
   <string name="TR_SCREENO_BUTTON_SOUND">Sound</string>
   <string name="TR_SCREENO_BUTTON_RECORD">Aufnahme</string>
   <string name="TR_SCREENO_BUTTON_VIDEO">Video</string>
-  <string name="TR_SCREENO_BUTTON_LYRICS">Liedtext</string>
+  <string name="TR_SCREENO_BUTTON_LYRICS">Liedtext/Grafik</string>
   <string name="TR_SCREENO_BUTTON_THEME">Design</string>
   <string name="TR_SCREENO_BUTTON_CREDITS">Credits</string>
+  <string name="TR_SCREENO_WARNINGRESTART">Neustart erforderlich, damit die Änderungen wirksam werden.</string>
   <string name="TR_SCREENOGAME_BUTTON_SERVER">Serveradresse</string>
+  <string name="TR_SCREENOGAME_BUTTON_SONGFOLDER">Song Ordner hinzufügen</string>
   <string name="TR_SCREENOGAME_OPTIONS">Spieleinstellungen</string>
   <string name="TR_SCREENOGAME_LANGUAGE">Sprache</string>
   <string name="TR_SCREENOGAME_DEBUGLEVEL">Debug-Level</string>
@@ -220,6 +222,7 @@
   <string name="TR_SCREENOGAME_DIFFICULTY">Schwierigkeit</string>
   <string name="TR_SCREENOGAME_TIMERMODE">Zeit-Modus</string>
   <string name="TR_SCREENOGAME_HIGHSCORESTYLE">Highscore-Stil</string>
+  <string name="TR_SCREENOGAME_SONGFOLDER">Wähle den Song Ordner aus, der hinzugefügt werden soll</string>
   <string name="TR_SCREENORECORD_OPTIONS">Aufnahmeeinstellungen</string>
   <string name="TR_SCREENORECORD_DEVICE">Soundkarte</string>
   <string name="TR_SCREENORECORD_INPUT">Eingang</string>
@@ -238,6 +241,7 @@
   <string name="TR_SCREENOSOUND_BACKGROUNDMUSICSOURCE">Quelle der Hintergrundmusik</string>
   <string name="TR_SCREENOSOUND_PREVIEWMUSICVOLUME">Lautstärke der Vorschau</string>
   <string name="TR_SCREENOSOUND_GAMEMUSICVOLUME">Lautstärke des Spiels</string>
+  <string name="TR_SCREENOSOUND_SOUNDEFFECTVOLUME">Lautstärke der Soundeffekte</string>
   <string name="TR_SCREENOSOUND_KARAOKEEFFECT">Karaoke Effekt</string>
   <string name="TR_SCREENOTHEME_OPTIONS">Designeinstellungen</string>
   <string name="TR_SCREENOTHEME_THEME">Design</string>
@@ -251,6 +255,11 @@
   <string name="TR_SCREENOLYRICS_OPTIONS">Liedtexteinstellungen</string>
   <string name="TR_SCREENOLYRICS_STYLE">Lyrics-Animation</string>
   <string name="TR_SCREENOLYRICS_POSITION">Liedtext Position</string>
+  <string name="TR_SCREENOGRAPHICS_OPTIONS">Grafikoptionen</string>
+  <string name="TR_SCREENOGRAPHICS_TEXTUREQUALITY">Textur-Qualität</string>
+  <string name="TR_SCREENOGRAPHICS_COVERSIZE">Covergröße (Pixel)</string>
+  <string name="TR_SCREENOGRAPHICS_FULLSCREEN">Vollbild</string>
+  <string name="TR_SCREENOGRAPHICS_STRETCH">gestrecktes Bild</string>
   <string name="TR_SCREENOVIDEO_OPTIONS">Videoeinstellungen</string>
   <string name="TR_SCREENOVIDEO_VIDEOBACKGROUNDS">Video-Hintergründe</string>
   <string name="TR_SCREENOVIDEO_VIDEOPREVIEW">Video-Vorschau</string>
